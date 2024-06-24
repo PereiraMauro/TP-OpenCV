@@ -18,9 +18,11 @@ Para utilizar este proyecto, sigue estos pasos:
 
 2. **Ejecucion del Proyecto**
 - ## Clonar este repositorio:
+   ```bash
 git clone https://github.com/tu_usuario/TP-OpenCV.git
 cd TP-OpenCV
 - ## Ejecuta el script principal 'main.py'.
+   ```bash
 python main.py
 
 3. **Estructura del Proyecto**
