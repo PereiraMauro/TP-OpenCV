@@ -19,16 +19,16 @@ Para utilizar este proyecto, sigue estos pasos:
 2. **Ejecucion del Proyecto**
 - ## Clonar este repositorio:
    ```bash
-git clone https://github.com/tu_usuario/TP-OpenCV.git
-cd TP-OpenCV
+    git clone https://github.com/tu_usuario/TP-OpenCV.git
+    cd TP-OpenCV
 - ## Ejecuta el script principal 'main.py'.
    ```bash
-python main.py
+    python main.py
 
 3. **Estructura del Proyecto**
-- ## main.py: Script principal que inicia el sistema de detección de fatiga.
-- ## detector.py: Contiene la clase DriverFatigueDetector que implementa la lógica de detección de fatiga.
-- ## camera.py: Contiene la clase Camera que maneja la interacción con la cámara.
+-  **main.py:** Script principal que inicia el sistema de detección de fatiga.
+-  **detector.py:** Contiene la clase DriverFatigueDetector que implementa la lógica de detección de fatiga.
+-  **camera.py:** Contiene la clase Camera que maneja la interacción con la cámara.
 
 
 
