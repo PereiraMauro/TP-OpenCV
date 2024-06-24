@@ -2,6 +2,7 @@
 
 import cv2
 import time
+from playsound import playsound
 
 class DriverFatigueDetector:
     def __init__(self):
@@ -23,6 +24,7 @@ class DriverFatigueDetector:
                     self.drowsy_start_time = time.time()
                 elif time.time() - self.drowsy_start_time >= self.drowsy_threshold:
                     drowsy_detected = True
+                    playsound('assets/alerta.mp3')
             else:
                 self.drowsy_start_time = None
         return frame, drowsy_detected
