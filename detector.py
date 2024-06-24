@@ -2,7 +2,8 @@
 
 import cv2
 import time
-from playsound import playsound
+import pygame
+import os
 
 class DriverFatigueDetector:
     def __init__(self):
@@ -10,6 +11,7 @@ class DriverFatigueDetector:
         self.eye_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_eye.xml')
         self.drowsy_threshold = 5  # seconds
         self.drowsy_start_time = None
+        pygame.mixer.init()  # Initialize the mixer for pygame
 
     def detect_fatigue(self, frame):
         gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
@@ -24,7 +26,8 @@ class DriverFatigueDetector:
                     self.drowsy_start_time = time.time()
                 elif time.time() - self.drowsy_start_time >= self.drowsy_threshold:
                     drowsy_detected = True
-                    playsound('assets/alerta.mp3')
+                    alert_sound = pygame.mixer.Sound('assets/alerta.mp3')
+                    alert_sound.play()
             else:
                 self.drowsy_start_time = None
         return frame, drowsy_detected
