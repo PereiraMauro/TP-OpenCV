@@ -12,9 +12,12 @@ Este proyecto implementa un sistema de detección de fatiga en conductores utili
 
 Para utilizar este proyecto, sigue estos pasos:
 
-1. **Instalación de Dependencias:** Asegúrate de tener instalado Python y OpenCV en tu entorno.
+1. **Instalación de Dependencias:** Asegúrate de tener instalado Python, Git, OpenCV, Pygame en tu entorno.
    ```bash
    pip install opencv-python
+-   
+    ```bash
+    pip install pygame
 
 2. **Ejecucion del Proyecto**
 - ## Clonar este repositorio:
@@ -30,7 +33,7 @@ Para utilizar este proyecto, sigue estos pasos:
 -  **main.py:** Script principal que inicia el sistema de detección de fatiga.
 -  **detector.py:** Contiene la clase DriverFatigueDetector que implementa la lógica de detección de fatiga.
 -  **camera.py:** Contiene la clase Camera que maneja la interacción con la cámara.
-
+-  **assents:** Contiene los archivos aparte que son necesarios
 
 
 
