@@ -8,7 +8,8 @@ import os
 class DriverFatigueDetector:
     def __init__(self):
         self.face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
-        self.eye_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_eye.xml')
+        self.landmark_detector = cv2.face.createFacemarkLBF()
+        self.landmark_detector.loadModel('lbfmodel.yaml')
         self.drowsy_threshold = 5  # seconds
         self.drowsy_start_time = None
         pygame.mixer.init()  # Initialize the mixer for pygame
@@ -21,8 +22,11 @@ class DriverFatigueDetector:
         for (x, y, w, h) in faces:
             cv2.rectangle(frame, (x, y), (x+w, y+h), (255, 0, 0), 2)
             face_roi = gray_frame[y:y+h, x:x+w]
-            eyes = self.eye_cascade.detectMultiScale(face_roi, scaleFactor=1.1, minNeighbors=3, minSize=(20, 20))
-            if len(eyes) == 0:
+            _, landmarks = self.landmark_detector.fit(face_roi, faces)
+            for landmark in landmarks:
+                for (x, y) in landmark[0][36:48]:  # Eye landmarks are points 36-47
+                    cv2.circle(frame, (x, y), 2, (0, 255, 0), -1)
+            if len(landmarks) == 0:
                 if self.drowsy_start_time is None:
                     self.drowsy_start_time = time.time()
                 elif time.time() - self.drowsy_start_time >= self.drowsy_threshold:
