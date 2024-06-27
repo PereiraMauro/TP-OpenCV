@@ -26,7 +26,7 @@ class DriverFatigueDetector:
                     self.drowsy_start_time = time.time()
                 elif time.time() - self.drowsy_start_time >= self.drowsy_threshold:
                     drowsy_detected = True
-                    alert_sound = pygame.mixer.Sound('assets/alerta.mp3')
+                    alert_sound = pygame.mixer.Sound('assents/Alerta.mp3')
                     alert_sound.play()
             else:
                 self.drowsy_start_time = None
