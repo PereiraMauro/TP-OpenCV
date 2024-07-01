@@ -1,6 +1,6 @@
 ### `requirements.txt`
 
-```plaintext
-opencv-python-headless==4.10.0.2
+opencv-python-headless==4.10.0.82
+opencv-contrib-python==4.10.0.82
 pygame==2.1.0
 numpy==1.23.5
