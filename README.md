@@ -1,12 +1,28 @@
-# Sistema de Detección de Fatiga en Conductores usando OpenCV
+# Proyecto de Detección de Fatiga - Programación Avanzada - UNAB
 
-Este proyecto implementa un sistema de detección de fatiga en conductores utilizando Python y OpenCV. Utiliza técnicas de procesamiento de imágenes para monitorear el estado del conductor en tiempo real y detectar signos de somnolencia.
+Este proyecto implementa un sistema de detección de fatiga en conductores utilizando Python y OpenCV. Utiliza técnicas de procesamiento de imágenes para monitorear el estado del conductor en tiempo real y detectar signos de somnolencia
 
 ## Funcionalidades
 
 - **Detección de Fatiga en Tiempo Real:** Utiliza una cámara para capturar imágenes del conductor y procesarlas en tiempo real para detectar signos de fatiga.
 - **Indicación Visual de Somnolencia:** Marca visualmente las imágenes capturadas con indicaciones cuando se detecta somnolencia.
 - **Interfaz de Usuario Simple:** Muestra la salida de detección en una ventana de visualización de OpenCV de manera intuitiva y fácil de entender.
+
+## Requisitos
+
+1. Python 3.x
+2. Las siguientes librerías de Python:
+
+    ```
+    opencv-python
+    dlib
+    numpy
+    scipy
+    ```
+
+    Para instalar estas dependencias, usamos `requirements.txt` incluido en el proyecto.
+
+
 
 ## Configuración del Proyecto
 
@@ -37,12 +53,7 @@ Para utilizar este proyecto, sigue estos pasos:
 
 ### Ejecución del Proyecto
 
-1. **Clonar el Repositorio:**
-   - Clona este repositorio desde GitHub:
-     ```bash
-     git clone https://github.com/PereiraMauro/TP-OpenCV.git
-     ```
-   - Dirigirse hacia la ruta del proyecto:
+1. **Dirigirse hacia la ruta del proyecto:**
      ```bash
      cd TP-OpenCV
      ```  
@@ -53,11 +64,8 @@ Para utilizar este proyecto, sigue estos pasos:
      python main.py
      ```
 
-### Estructura del Proyecto
+3. La aplicación comenzará a capturar video desde la cámara que se tenga instalada por defecto y mostrará la ventana de detección de fatiga. Si se detecta fatiga, se mostrará un mensaje de alerta y se emitirá un sonido.
 
-- **main.py:** Script principal que inicia el sistema de detección de fatiga.
-- **detector.py:** Contiene la clase `DriverFatigueDetector` que implementa la lógica de detección de fatiga.
-- **camera.py:** Contiene la clase `Camera` que maneja la interacción con la cámara.
-- **assets:** Directorio que contiene archivos necesarios para el funcionamiento del proyecto.
--**requirements.txt** Archivo que contiene los requerimientos necesarios para el funcionamiento del proyecto
+---
+
 

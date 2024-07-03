@@ -1,30 +1,37 @@
-# main.py
-
 import cv2
-from detector import DriverFatigueDetector
-from camera import Camera
+from detector import DetectorFatiga
 
-def main():
-    detector = DriverFatigueDetector()
-    camera = Camera()
+class AplicacionDeteccionFatiga:
+    def __init__(self):
+        # Inicializa el detector de fatiga
+        self.detector = DetectorFatiga()
+        # Inicia la captura de video
+        self.cap = cv2.VideoCapture(0)
 
-    try:
+    def ejecutar(self):
         while True:
-            # Obtener el frame de la cámara
-            frame = camera.get_frame()
-            # Detectar fatiga en el frame
-            frame, drowsy_detected = detector.detect_fatigue(frame)
-            if drowsy_detected:
-                # Mostrar un mensaje de advertencia en el frame
-                cv2.putText(frame, 'CUIDADO', (10, 100), cv2.FONT_HERSHEY_SIMPLEX, 3, (0, 0, 255), 6)
-            # Mostrar el frame con la detección
-            cv2.imshow('Driver Fatigue Detector', frame)
+            ret, cuadro = self.cap.read()
+            if not ret:
+                break
+
+            # Detecta fatiga en el cuadro actual
+            cuadro, fatiga_detectada = self.detector.detectar_fatiga(cuadro)
+
+            # Mostrar el cuadro
+            cv2.imshow('Deteccion de Fatiga', cuadro)
+
+            # Activa una alerta si se detecta fatiga
+            if fatiga_detectada:
+                print("Cansancio detectado!! Los ojos se están cerrando.")
+
+            # Romper el bucle si se presiona 'q'
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
-    finally:
-        # Liberar la cámara y cerrar todas las ventanas
-        camera.release()
+
+        # Liberar la captura y cerrar las ventanas
+        self.cap.release()
+        cv2.destroyAllWindows()
 
 if __name__ == '__main__':
-    main()
-
+    app = AplicacionDeteccionFatiga()
+    app.ejecutar()
